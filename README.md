@@ -1,5 +1,5 @@
 # Selenium自动化测试用例
-* 版本：Javascript
+* 脚本语言：Javascript
 * 运行环境：node
 
 # Api
@@ -7,5 +7,5 @@
 http://docs.seleniumhq.org/
 
 Github：
-https://github.com/SeleniumHQ/selenium
+https://github.com/SeleniumHQ/selenium <br>
 http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/
