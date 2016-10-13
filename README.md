@@ -1,5 +1,6 @@
-# autotest
-selenium自动化测试nodejs版
+# Selenium自动化测试用例
+* 版本：Javascript
+* 运行环境：node
 
 # Api
 官网：
