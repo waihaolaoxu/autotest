@@ -1,12 +1,15 @@
 /*
-	Api地址：
-	https://github.com/SeleniumHQ/selenium
-	http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/
+ @ Author：前端老徐
+ @ Name：自动登录并添加评论 - 测试用例
+ @ Date：2016/10/13
+ @ E-mail：442413729@qq.com
+ @ Weibo:http://weibo.com/qdlaoxu
+ @ GitHub:https://github.com/waihaolaoxu/autotest
+ @ Blog:http://www.loveqiao.com/
 */
 
 var driver  = require('selenium-webdriver');
 var builder = new driver.Builder().forBrowser('chrome').build();
-
 
 // 1.登录操作
 builder.get('http://service.jiajuol.com/login').then(function(){
@@ -16,7 +19,6 @@ builder.get('http://service.jiajuol.com/login').then(function(){
     	document.getElementById("btnLogin").click();
     });
 });
-
 
 // 2.评论操作
 setTimeout(function(){
@@ -28,4 +30,4 @@ setTimeout(function(){
 	    	$('.submit').click();
 	    })
 	});
-},3000);
+},2000);
