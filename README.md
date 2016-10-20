@@ -1,11 +1,10 @@
-# Selenium自动化测试用例
-* 脚本语言：Javascript
-* 运行环境：node
+# Selenium自动化测试用例 #
+> 脚本语言：`JavaScript`  
+> 运行环境：`NodeJs`
 
-# Api
-官网：  
-http://docs.seleniumhq.org/
+# 参考资料 #
+> [Selenium官网](http://docs.seleniumhq.org/)  
+> [Selenium Github](https://github.com/SeleniumHQ/selenium)  
+> [selenium-webdriver](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/)
 
-Github：  
-https://github.com/SeleniumHQ/selenium  
-http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/
+2016/10/20 17:47:32 

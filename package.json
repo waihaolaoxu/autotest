@@ -1,5 +1,5 @@
 {
-  "name": "autotest",
+  "name": "Selenium自动化测试用例",
   "version": "1.0.0",
   "description": "selenium自动化测试nodejs版",
   "main": "test.js",
@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/waihaolaoxu/autotest.git"
   },
-  "author": "",
+  "author": "前端老徐",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/waihaolaoxu/autotest/issues"
