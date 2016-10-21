@@ -1,5 +1,5 @@
 # Selenium #
-![](https://camo.githubusercontent.com/c5ee2f8cb386115bc32259d6a58d863ad9dc2e31/687474703a2f2f7777772e73656c656e69756d68712e6f72672f696d616765732f6269672d6c6f676f2e706e67)
+[![](https://camo.githubusercontent.com/c5ee2f8cb386115bc32259d6a58d863ad9dc2e31/687474703a2f2f7777772e73656c656e69756d68712e6f72672f696d616765732f6269672d6c6f676f2e706e67)](http://www.seleniumhq.org/)
 
 脚本语言：`JavaScript`  
 运行环境：`NodeJs`
