@@ -1,5 +1,5 @@
 {
-  "name": "Selenium自动化测试用例",
+  "name": "autotest ",
   "version": "1.0.0",
   "description": "selenium自动化测试nodejs版",
   "main": "test.js",
