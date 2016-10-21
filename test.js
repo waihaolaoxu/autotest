@@ -15,6 +15,9 @@ var webdriver = require('selenium-webdriver'),
 //启动谷歌浏览器
 var driver = new webdriver.Builder().forBrowser('chrome').build();
 
+//将浏览器设置为最大化的状态
+driver.manage().window().maximize(); 
+
 //跳转页面
 driver.get('http://service.jiajuol.com/login').then(function(){
 	//输入帐号密码登录
@@ -27,10 +30,10 @@ driver.get('http://service.jiajuol.com/login').then(function(){
 driver.wait(until.urlIs('http://www.jiajuol.com/')); //延迟时间如果不填写他会一直轮询
 
 //跳转评论页面
-driver.get('http://seller.jiajuol.com/comment/publish/4').then(function(){
+driver.get('http://seller.jiajuol.com/comment/publish/100001').then(function(){
 	//添加评论
 	var query = driver.wait(until.elementLocated(By.id('title')));
-		query.sendKeys('自动化测试-xsl');
+		query.sendKeys('良心商家-xsl');
 	driver.findElement(By.id('content')).sendKeys('不错顶一下~~');
 	driver.findElement(By.xpath('//*[@id="comment"]/li[4]/div[2]/input')).click();
 });
