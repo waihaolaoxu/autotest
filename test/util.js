@@ -23,10 +23,10 @@ Fn.prototype={
 	log:function(obj,tip){
 		driver.wait(function() {
 		 	return obj.getText().then(function(title) {
-		 		if(title != tip){
-		 			console.log(title+'-----未通过！'.red)
+		 		if(title == tip){
+		 			console.log(title+'-----通过！'.green);
 		 		}else{
-		 			console.log(tip+'-----通过！'.green)
+		 			console.log(tip+'-----未通过！'.red);
 		 		}
 		 		return true;
 		 	});
@@ -42,6 +42,17 @@ Fn.prototype={
 		username.sendKeys(name);
 		this.btn.click();
 		this.log(driver.findElement(By.xpath('//*[@id="form-account-error"]')),tip);
+	},
+
+	//设置用户名
+	setUserpwd:function(pwd,tip){
+		driver.wait(until.titleIs('个人注册'));
+	    var userpwd=driver.findElement(By.xpath('//*[@id="form-pwd"]'));
+		userpwd.click();
+		userpwd.clear();
+		userpwd.sendKeys(pwd);
+		this.btn.click();
+		this.log(driver.findElement(By.xpath('//*[@id="register-form"]/div[4]/span')),tip);
 	}
 }
 
