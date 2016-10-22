@@ -2,8 +2,9 @@
   "name": "autotest ",
   "version": "1.0.0",
   "description": "selenium自动化测试nodejs版",
-  "main": "test.js",
+  "main": "index.js",
   "dependencies": {
+    "colors": "^1.1.2",
     "selenium-webdriver": "^3.0.0-beta-3"
   },
   "devDependencies": {},
