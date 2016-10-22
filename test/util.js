@@ -24,9 +24,9 @@ Fn.prototype={
 		driver.wait(function() {
 		 	return obj.getText().then(function(title) {
 		 		if(title != tip){
-		 			console.log(title+'---------------未通过！'.red)
+		 			console.log(title+'-----未通过！'.red)
 		 		}else{
-		 			console.log(tip+'---------------通过！'.green)
+		 			console.log(tip+'-----通过！'.green)
 		 		}
 		 		return true;
 		 	});
