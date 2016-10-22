@@ -17,6 +17,8 @@ var driver = new webdriver.Builder().forBrowser('chrome').build();
 
 //将浏览器设置为最大化的状态
 driver.manage().window().maximize(); 
+//将浏览器的大小自定义为600*400
+// driver.manage().window().setSize(600, 400); 
 
 //跳转页面
 driver.get('http://service.jiajuol.com/login').then(function(){
@@ -32,8 +34,26 @@ driver.wait(until.urlIs('http://www.jiajuol.com/')); //延迟时间如果不填�
 //跳转评论页面
 driver.get('http://seller.jiajuol.com/comment/publish/100001').then(function(){
 	//添加评论
-	var query = driver.wait(until.elementLocated(By.id('title')));
+	var query = driver.wait(until.elementLocated(By.id('title')));//等待一个element
 		query.sendKeys('良心商家-xsl');
 	driver.findElement(By.id('content')).sendKeys('不错顶一下~~');
 	driver.findElement(By.xpath('//*[@id="comment"]/li[4]/div[2]/input')).click();
 });
+
+
+// driver.wait(until.titleIs('webdriver_百度搜索'), 1000);
+// driver.wait(function() {
+//  	return driver.getTitle().then(function(title) {
+//  		return title === 'webdriver_百度搜索';
+//  	});
+// }, 1000);
+
+// //延迟1秒关闭窗口
+// driver.sleep(1000)
+// console.log("延迟1秒关闭")
+// //关闭窗口
+// driver.quit();
+
+// driver.executeScript(function(){
+// 	//可以在页面内执行一些js脚本
+// })
