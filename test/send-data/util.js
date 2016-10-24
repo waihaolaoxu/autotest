@@ -33,7 +33,8 @@ Fn.prototype={
 		var self=this;
 		driver.get(opt.url).then(function(){
 			//输入信息
-			// driver.wait(until.elementLocated(By.xpath(opt.btnXpath)));
+			driver.wait(until.elementLocated(By.xpath(opt.btnXpath)));//等待提交按钮加载完毕
+			driver.sleep(1000);//在等待1s
 			self.each(opt.input,function(i,d){
 				var obj=driver.findElement(By.xpath(d.xpath));
 				obj.clear();

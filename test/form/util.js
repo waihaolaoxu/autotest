@@ -67,7 +67,6 @@ Fn.prototype={
 	formValidate:function(opt){
 		// driver.wait(until.titleIs('个人注册'));
 	    var input=driver.findElement(By.xpath(opt.inputXpath));
-		// input.click();
 		input.clear();
 		input.sendKeys(opt.val);
 		driver.findElement(By.xpath(opt.btnXpath)).click();
