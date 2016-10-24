@@ -1,4 +1,4 @@
-var util=new require('./util');
+var util=require('./util');
 var fn=new util();
 
 //登陆

@@ -14,9 +14,13 @@ var webdriver = require('selenium-webdriver'),
     until = webdriver.until;
 
 //启动浏览器
-var driver = new webdriver.Builder().forBrowser('chrome').build();//chrome|firefox
+var driver = new webdriver.Builder().forBrowser('chrome').build(); //chrome|firefox
 
-function Fn(){}
+function Fn(){
+	this.driver=driver;
+	this.By=By;
+	this.until=until;
+}
 Fn.prototype={
 	init:function(opt){
 		//跳转地址
@@ -39,7 +43,7 @@ Fn.prototype={
 				tip:d.tip,
 				errorXpath:data.errorXpath,
 				inputXpath:data.inputXpath,
-				btnXpath:data.btnXpath,
+				btnXpath:data.btnXpath
 			});
 		})
 	},
@@ -48,6 +52,9 @@ Fn.prototype={
 		driver.wait(function() {
 		 	return obj.getText().then(function(title) {
 		 		if(title == tip){
+		 			if(title==""){
+		 				title='输入正确格式'
+		 			}
 		 			console.log(title+'-----通过！'.green);
 		 		}else{
 		 			console.log(tip+'-----未通过！'.red);
@@ -58,7 +65,7 @@ Fn.prototype={
 	},
 	//设置用户名
 	formValidate:function(opt){
-		driver.wait(until.titleIs('个人注册'));
+		// driver.wait(until.titleIs('个人注册'));
 	    var input=driver.findElement(By.xpath(opt.inputXpath));
 		// input.click();
 		input.clear();

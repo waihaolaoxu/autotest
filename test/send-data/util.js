@@ -18,7 +18,11 @@ var driver = new webdriver.Builder().forBrowser('firefox').build();
 //窗口最大化
 driver.manage().window().maximize(); //将浏览器设置为最大化的状态
 
-function Fn(){}
+function Fn(){
+	this.driver=driver;
+	this.By=By;
+	this.until=until;
+}
 Fn.prototype={
 	each:function(data,callback){
 		for(var x in data){
