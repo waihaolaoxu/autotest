@@ -41,6 +41,7 @@ driver.get('http://seller.jiajuol.com/comment/publish/100001').then(function(){
 });
 
 
+// driver.wait(until.urlIs('http://www.jiajuol.com/'));//监听url
 // driver.wait(until.titleIs('webdriver_百度搜索'), 1000);
 // driver.wait(function() {
 //  	return driver.getTitle().then(function(title) {

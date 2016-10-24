@@ -14,7 +14,7 @@ var webdriver = require('selenium-webdriver'),
     until = webdriver.until;
 
 //启动浏览器
-var driver = new webdriver.Builder().forBrowser('firefox').build();
+var driver = new webdriver.Builder().forBrowser('chrome').build();//firefox|chrome
 //窗口最大化
 driver.manage().window().maximize(); //将浏览器设置为最大化的状态
 
@@ -33,16 +33,13 @@ Fn.prototype={
 		var self=this;
 		driver.get(opt.url).then(function(){
 			//输入信息
+			// driver.wait(until.elementLocated(By.xpath(opt.btnXpath)));
 			self.each(opt.input,function(i,d){
 				var obj=driver.findElement(By.xpath(d.xpath));
-				obj.click();
 				obj.clear();
 				obj.sendKeys(d.val);
 			});
 			driver.findElement(By.xpath(opt.btnXpath)).click();
-			if(typeof opt.isUrl=='string'){
-				driver.wait(until.urlIs(opt.isUrl));
-			}
 		});
 	}
 }

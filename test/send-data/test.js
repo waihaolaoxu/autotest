@@ -1,23 +1,26 @@
+// 灌数据
+
 var util=require('./util');
 var fn=new util();
-
+var driver=fn.driver;
+var until=fn.until;
 //登陆
 fn.sendData({
 	url:'http://service.jiajuol.com/login',// 登陆地址
 	input:[
 		{
 			xpath:'//*[@id="loginname"]',
-			val:'aaa123456'
+			val:'13366580095'
 		},{
 			xpath:'//*[@id="passwd"]',
-			val:'aaa123456'
+			val:'laoxu123'
 		}
 	],
-	btnXpath:'//*[@id="btnLogin"]',
-	isUrl:'http://www.jiajuol.com/' //登陆成功后跳转的地址
+	btnXpath:'//*[@id="btnLogin"]'
 });
 
 //灌水
+driver.wait(until.urlIs('http://www.jiajuol.com/'));//监听url
 fn.sendData({
 	url:'http://seller.jiajuol.com/comment/publish/100001',// 评论页面地址
 	input:[
