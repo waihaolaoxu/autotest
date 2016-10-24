@@ -14,7 +14,7 @@ var webdriver = require('selenium-webdriver'),
     until = webdriver.until;
 
 //启动浏览器
-var driver = new webdriver.Builder().forBrowser('firefox').build();
+var driver = new webdriver.Builder().forBrowser('chrome').build();//chrome|firefox
 
 function Fn(){}
 Fn.prototype={
@@ -60,7 +60,7 @@ Fn.prototype={
 	formValidate:function(opt){
 		driver.wait(until.titleIs('个人注册'));
 	    var input=driver.findElement(By.xpath(opt.inputXpath));
-		input.click();
+		// input.click();
 		input.clear();
 		input.sendKeys(opt.val);
 		driver.findElement(By.xpath(opt.btnXpath)).click();
