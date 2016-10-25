@@ -9,12 +9,19 @@
 */
 
 var colors = require('colors'); 
+var fs = require("fs");
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
     until = webdriver.until;
 
 //启动浏览器
 var driver = new webdriver.Builder().forBrowser('chrome').build(); //chrome|firefox
+
+//创建测试报告
+var writerStream = fs.createWriteStream('output.txt');
+var d=new Date().toString();
+writerStream.write('前端老徐的自动化测试报告 \n'+ 
+	d +'\n------------------------------------------------\n\n');
 
 function Fn(){
 	this.driver=driver;
@@ -52,12 +59,14 @@ Fn.prototype={
 		driver.wait(function() {
 		 	return obj.getText().then(function(title) {
 		 		if(title == tip){
-		 			if(title==""){
-		 				title='输入正确格式'
+		 			if(tip==""){
+		 				tip='输入正确格式'
 		 			}
-		 			console.log(title+'-----通过！'.green);
+		 			console.log(tip+'---------------通过！'.green);
+		 			writerStream.write(tip+'---------------通过！\n','UTF8');
 		 		}else{
-		 			console.log(tip+'-----未通过！'.red);
+		 			console.log(tip+'---------------未通过！'.red);
+		 			writerStream.write(tip+'---------------未通过！\n','UTF8');
 		 		}
 		 		return true;
 		 	});
