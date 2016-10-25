@@ -32,7 +32,7 @@ fn.runFormValidate({
 	data:[
 		{
 			val:'',
-			tip:'手机号不能为空' //想要的反馈
+			tip:'手机号不能为空!' //想要的反馈
 		},
 		{
 			val:1,//输入的值

@@ -18,11 +18,29 @@ var webdriver = require('selenium-webdriver'),
 var driver = new webdriver.Builder().forBrowser('chrome').build(); //chrome|firefox
 
 //创建测试报告
-var writerStream = fs.createWriteStream('output.txt');
-var d=new Date().toString();
-writerStream.write('前端老徐的自动化测试报告 \n'+ 
-	d +'\n------------------------------------------------\n\n');
+var writerStream = fs.createWriteStream('output.html');
+var date=new Date();
+function fdate(d){
+	if(d<10)return '0'+d;
+	return d;
+}
+writerStream.write('<style>body{width:760px;margin:0 auto}.ok{color:green;}.err{color:#f00}.time{color:#999;}#result{color:#ffb300;}</style><h1>前端老徐的自动化测试报告</h1><p class="time">测试时间：'
+	+fdate(date.getFullYear())+'/'
+	+fdate(date.getMonth())+'/'
+	+fdate(date.getDate())+'&nbsp;'
+	+fdate(date.getHours())+':'
+	+fdate(date.getMinutes())+':'
+	+fdate(date.getSeconds())+'</p><p id="result"></p>'
+	+'<script>window.onload=function(){\
+		document.getElementById("result").innerHTML=(function(){\
+			var ok=document.querySelectorAll(".ok").length,\
+				err=document.querySelectorAll(".err").length;\
+			var str="通过数:"+ok+"&nbsp;&nbsp;失败数："+err+"&nbsp;&nbsp;通过率："+((ok/(ok+err)*100).toFixed(2))+"%";\
+			return str;\
+		}())\
+	}</script>');
 
+//主程序
 function Fn(){
 	this.driver=driver;
 	this.By=By;
@@ -34,7 +52,7 @@ Fn.prototype={
 		driver.get(opt.url);
 		//窗口最大化
 		if(opt.fullScreen){
-			driver.manage().window().maximize(); //将浏览器设置为最大化的状态
+			driver.manage().window().maximize();
 		}
 	},
 	each:function(data,callback){
@@ -63,10 +81,10 @@ Fn.prototype={
 		 				tip='输入正确格式'
 		 			}
 		 			console.log(tip+'---------------通过！'.green);
-		 			writerStream.write(tip+'---------------通过！\n','UTF8');
+		 			writerStream.write('<p class="ok">'+tip+'---------------通过！</p>','UTF8');
 		 		}else{
 		 			console.log(tip+'---------------未通过！'.red);
-		 			writerStream.write(tip+'---------------未通过！\n','UTF8');
+		 			writerStream.write('<p class="err">'+tip+'---------------未通过！</p>','UTF8');
 		 		}
 		 		return true;
 		 	});
@@ -74,7 +92,6 @@ Fn.prototype={
 	},
 	//设置用户名
 	formValidate:function(opt){
-		// driver.wait(until.titleIs('个人注册'));
 	    var input=driver.findElement(By.xpath(opt.inputXpath));
 		input.clear();
 		input.sendKeys(opt.val);
