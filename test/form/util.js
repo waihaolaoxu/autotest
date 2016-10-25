@@ -35,7 +35,7 @@ writerStream.write('<style>body{width:760px;margin:0 auto}.ok{color:green;}.err{
 		document.getElementById("result").innerHTML=(function(){\
 			var ok=document.querySelectorAll(".ok").length,\
 				err=document.querySelectorAll(".err").length;\
-			var str="通过数:"+ok+"&nbsp;&nbsp;失败数："+err+"&nbsp;&nbsp;通过率："+((ok/(ok+err)*100).toFixed(2))+"%";\
+			var str="通过:"+ok+"个&nbsp;&nbsp;失败："+err+"个&nbsp;&nbsp;通过率："+((ok/(ok+err)*100).toFixed(2))+"%";\
 			return str;\
 		}())\
 	}</script>');
@@ -80,11 +80,11 @@ Fn.prototype={
 		 			if(tip==""){
 		 				tip='输入正确格式'
 		 			}
-		 			console.log(tip+'---------------通过！'.green);
-		 			writerStream.write('<p class="ok">'+tip+'---------------通过！</p>','UTF8');
+		 			console.log('      √ '.green+tip.grey);
+		 			writerStream.write('<p class="ok">√ '+tip+'</p>','UTF8');
 		 		}else{
-		 			console.log(tip+'---------------未通过！'.red);
-		 			writerStream.write('<p class="err">'+tip+'---------------未通过！</p>','UTF8');
+		 			console.log('      × '.red+tip.grey);
+		 			writerStream.write('<p class="err">× '+tip+'</p>','UTF8');
 		 		}
 		 		return true;
 		 	});

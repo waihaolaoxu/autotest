@@ -7,7 +7,7 @@
 var util=require('./util');
 var fn=new util();
 fn.init({
-	url:__dirname+'/test.html',// 打开地址URL
+	url:__dirname+'/reg.html',// 打开地址URL
 	fullScreen:false //是否全屏显示 可选值(true|false)
 });
 
