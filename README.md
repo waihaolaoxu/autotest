@@ -4,6 +4,9 @@
 脚本语言：`JavaScript`  
 运行环境：`NodeJs`
 
+## 测试报告 ##
+![](output.png)
+
 ## 参考资料 ##
 [Selenium官网](http://docs.seleniumhq.org/)  
 [Selenium Github](https://github.com/SeleniumHQ/selenium)  
