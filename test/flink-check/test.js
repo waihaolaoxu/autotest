@@ -1,13 +1,14 @@
 /*
  @ Author：前端老徐
  @ Name：Selenium自动化友链检测
- @ Date：2016/10/13
+ @ Date：2016/11/25
  @ E-mail：442413729@qq.com
  @ Weibo:http://weibo.com/qdlaoxu
  @ GitHub:https://github.com/waihaolaoxu/autotest
  @ Blog:http://www.loveqiao.com/
 */
 var fs=require('fs');
+var data=require('./data');// 友链数据
 var colors = require('colors'); 
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
@@ -48,31 +49,25 @@ writerStream.write('<style>body{width:760px;margin:0 auto}.ok{color:green;}.err{
 	}</script>');
 
 
-
-// 友链数据
-var data=[
-	['http://home.fang.com/album/shufang/','http://www.jiajuol.com/pic/sp5'],
-	['http://home.fang.com/album/xiandai/','http://www.jiajuol.com/pic/s27']
-]
-
 //执行检测
 var step=0;//起始位置
 function start(){
-	driver.get(data[step][0]).then(function(){
+	var _url=data[step].url,_name=data[step].link_name;
+	driver.get(_url).then(function(){
 		// driver.sleep(1000)
 		var b=driver.findElements(By.xpath('//a[contains(@href, "www.jiajuol.com")]')).then(function(e){
 			if(e.length>0){
-				console.log(data[step][0]+'通过'.green);
-				writerStream.write('<p class="ok">√ '+data[step][0]+'</p>','UTF8');
+				console.log('√ --- '.green+_url+' --- '+_name);
+				writerStream.write('<p class="ok">√ '+_url+_name+'</p>','UTF8');
 			}else{
-				console.log(data[step][0]+'失败'.red);
-				writerStream.write('<p class="err">× '+data[step][0]+'</p>','UTF8');
+				console.log('× --- '.red+_url+' --- '+_name);
+				writerStream.write('<p class="err">× '+_url+_name+'</p>','UTF8');
 			}
 			if(step<data.length-1){
 				step++;
 				start();
 			}else{
-				console.log('检测完成'.green);
+				console.log('前端老徐自动化检测完成!'.green);
 			}
 		})
 	});
