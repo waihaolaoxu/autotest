@@ -55,7 +55,7 @@ function start(){
 	var _url=data[step].url,_name=data[step].link_name;
 	driver.get(_url).then(function(){
 		// driver.sleep(1000)
-		var b=driver.findElements(By.xpath('//a[contains(@href, "www.jiajuol.com")]')).then(function(e){
+		var b=driver.findElements(By.xpath('//a[contains(@href, "'+data[step].jiaju_url+'")]')).then(function(e){
 			if(e.length>0){
 				console.log('√ --- '.green+_url+' --- '+_name);
 				writerStream.write('<p class="ok">√ '+_url+_name+'</p>','UTF8');
