@@ -32,7 +32,7 @@ function fdate(d){
 	if(d<10)return '0'+d;
 	return d;
 }
-writerStream.write('<style>body{width:760px;margin:0 auto}.ok{color:green;}.err{color:#f00}.time{color:#999;}#result{color:#ffb300;}</style><h1>前端老徐的自动化测试报告</h1><p class="time">测试时间：'
+writerStream.write('<meta charset="UTF-8"><style>body{width:760px;margin:0 auto}.ok{color:green;}.err{color:#f00}.time{color:#999;}#result{color:#ffb300;}</style><h1>前端老徐的自动化测试报告</h1><p class="time">测试时间：'
 	+fdate(date.getFullYear())+'/'
 	+fdate(date.getMonth())+'/'
 	+fdate(date.getDate())+'&nbsp;'
