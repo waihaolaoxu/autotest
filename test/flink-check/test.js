@@ -51,6 +51,14 @@ writerStream.write('<meta charset="UTF-8"><style>body{width:760px;margin:0 auto}
 
 //执行检测
 var step=0;//起始位置
+function theNext(){
+	if(step<data.length-1){
+		step++;
+		start();
+	}else{
+		console.log('前端老徐自动化检测完成!'.green);
+	}
+}
 function start(){
 	var _url=data[step].url,_name=data[step].link_name;
 	driver.get(_url).then(function(){
@@ -63,13 +71,12 @@ function start(){
 				console.log('× --- '.red+_url+' --- '+_name);
 				writerStream.write('<p class="err">× '+_url+_name+'</p>','UTF8');
 			}
-			if(step<data.length-1){
-				step++;
-				start();
-			}else{
-				console.log('前端老徐自动化检测完成!'.green);
-			}
-		})
+			theNext();
+		}).catch(function(error) {
+		  // 处理前一个回调函数运行时发生的错误
+		  console.log('发生错误！', error);
+		  theNext()
+		});
 	});
 }
 start();
