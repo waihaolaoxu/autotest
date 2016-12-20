@@ -8,7 +8,8 @@
  @ Blog:http://www.loveqiao.com/
 */
 var fs=require('fs');
-var data=require('./data');
+var data=require('./url');
+data=data.split('\n');
 var colors = require('colors'); 
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
@@ -43,20 +44,25 @@ writerStream.write('<meta charset="UTF-8"><style>body{width:760px;margin:0 auto}
 //执行检测
 var step=0;//起始位置
 function theNext(){
-	if(step<data.length-1){
+	if(step<data.length){
 		step++;
 		start();
-	}else{
-		console.log('前端老徐自动化检测完成!'.green);
 	}
 }
 function start(){
-	var _url=data[step].url;
-	driver.get(data[step].url).then(function(){
+	var _url=data[step];
+	driver.get(_url).then(function(){
 		driver.getCurrentUrl().then(function(e){
 			if(_url==e){
-				console.log('√ --- '.green+_url);
-				writerStream.write('<p class="ok">√ '+_url+'</p>','UTF8');
+				driver.getTitle().then(function(e){
+					if(e){
+						console.log('√ --- '.green+_url);
+						writerStream.write('<p class="ok">√ '+_url+'</p>','UTF8');
+					}else{
+						console.log('× --- '.red+_url);
+						writerStream.write('<p class="err">× '+_url+'</p>','UTF8');
+					}
+				})
 			}else{
 				console.log('× --- '.red+_url);
 				writerStream.write('<p class="err">× '+_url+'</p>','UTF8');
