@@ -74,9 +74,13 @@ function start(){
 			theNext();
 		}).catch(function(error) {
 		  // 处理前一个回调函数运行时发生的错误
-		  console.log('发生错误！', error);
+		  console.log(_url.bgRed, error);
 		  theNext()
 		});
+	}).catch(function(error) {
+	  // 处理前一个回调函数运行时发生的错误
+	  console.log(_url.bgRed, error);
+	  theNext()
 	});
 }
 start();
