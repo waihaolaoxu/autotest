@@ -75,11 +75,13 @@ function start(){
 		}).catch(function(error) {
 		  // 处理前一个回调函数运行时发生的错误
 		  console.log(_url.bgRed, error);
+		  writerStream.write('<p class="err">× '+_url+'异常跳过</p>','UTF8');
 		  theNext()
 		});
 	}).catch(function(error) {
 	  // 处理前一个回调函数运行时发生的错误
 	  console.log(_url.bgRed, error);
+	  writerStream.write('<p class="err">× '+_url+'异常跳过</p>','UTF8');
 	  theNext()
 	});
 }
