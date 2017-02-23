@@ -13,7 +13,7 @@ var colors = require('colors');
 var webdriver = require('selenium-webdriver'),
     By = webdriver.By,
     until = webdriver.until;
-
+var arguments = process.argv.splice(2);
 
 //启动谷歌浏览器
 var driver = new webdriver.Builder().forBrowser('chrome').build();
@@ -51,6 +51,10 @@ writerStream.write('<meta charset="UTF-8"><style>body{width:760px;margin:0 auto}
 
 //执行检测
 var step=0;//起始位置
+if(arguments.length){
+	step=arguments[0];
+	console.log(arguments)
+}
 function theNext(){
 	if(step<data.length-1){
 		step++;
@@ -74,13 +78,13 @@ function start(){
 			theNext();
 		}).catch(function(error) {
 		  // 处理前一个回调函数运行时发生的错误
-		  console.log(_url.bgRed, error);
+		  console.log(_url.bgRed);
 		  writerStream.write('<p class="err">× '+_url+'异常跳过</p>','UTF8');
 		  theNext()
 		});
 	}).catch(function(error) {
 	  // 处理前一个回调函数运行时发生的错误
-	  console.log(_url.bgRed, error);
+	  console.log(_url.bgRed);
 	  writerStream.write('<p class="err">× '+_url+'异常跳过</p>','UTF8');
 	  theNext()
 	});
