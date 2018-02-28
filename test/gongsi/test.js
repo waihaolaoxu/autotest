@@ -21,27 +21,29 @@ var driver = new webdriver.Builder().forBrowser('chrome').build();
 
 
 //创建测试报告
-var writerStream = fs.createWriteStream('data.txt');
+var writerStream = fs.createWriteStream('data' + new Date().getTime() + '.txt');
 
 
 
 //执行检测
 var key_index = 6; //关键字索引
-var page = 125;//起始页
-var page_size = 200;//总页数
+var page = 1;//起始页
+var page_size = 199;//总页数
 var curDate = new Date();
-if(arguments.length){
-	page=arguments[0];
-	console.log(arguments)
+
+if(arguments.length == 2){
+	page = Number(arguments[0]);
+	key_index = arguments[1];
 }
+
 function theNext(){
 	if(page < page_size){
-		page ++;
+		page += 2;
 		start();
 	}else{
 		if(key_index < data.length){
 			key_index ++;
-			page = 0;
+			page = 1;
 			start();
 		}else{
 			console.log('完成!'.green);
