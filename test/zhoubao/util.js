@@ -17,8 +17,8 @@ const driver = new webdriver.Builder().forBrowser('chrome').build();//firefox|ch
 // driver.manage().window().maximize(); //将浏览器设置为最大化的状态
 
 //本地数据读取
-var workData = fs.readFileSync('data.txt').toString();
-// console.log("同步读取: " + data.toString());
+var work_day = fs.readFileSync('day.txt').toString();
+// var work_week = fs.readFileSync('week.txt').toString();
 
 function Fn(){
 	this.driver=driver;
@@ -54,10 +54,10 @@ Fn.prototype={
 				$('.things-items .ng-hide').removeClass('ng-hide');
 			});
 			driver.sleep(1000);
-			
+
 			//==========新建动态==============
 			driver.wait(until.elementLocated(By.xpath('//*[@id="es-layout-content-body"]/div/div/div[2]/div/ul/li[1]/div[4]/a[1]'))).click();//新建动态
-			driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div/form/div[1]/textarea'))).sendKeys(workData);//添加动态
+			driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div/form/div[1]/textarea'))).sendKeys(work_day);//添加动态
 			
 			//==========选择工作表==============
 			driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div/form/div[3]/div[3]/a'))).click();//选择工作表
@@ -66,7 +66,7 @@ Fn.prototype={
 			driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[3]/button[2]'))).click();//确定工作表
 			driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754ca5d332d5391e30762"]/table/tbody/tr/td[1]/span[1]'))).click();//删除明日计划
 			driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754ca5d332d5391e30761"]/table/tbody/tr/td[3]/div/div[1]/textarea'))).sendKeys('-');//当前工作计划
-			driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754ca5d332d5391e30761"]/table/tbody/tr/td[4]/div/div[1]/textarea'))).sendKeys(workData);//当日工作总结
+			driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754ca5d332d5391e30761"]/table/tbody/tr/td[4]/div/div[1]/textarea'))).sendKeys(work_day);//当日工作总结
 			driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754ca5d332d5391e30761"]/table/tbody/tr/td[6]/div/div[1]/textarea'))).sendKeys('-');//下一步工作计划
 			driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/worktable-fill/form/div[2]/div/button'))).click();//提交
 			
