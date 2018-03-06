@@ -17,8 +17,7 @@ const driver = new webdriver.Builder().forBrowser('chrome').build();//firefox|ch
 // driver.manage().window().maximize(); //将浏览器设置为最大化的状态
 
 //本地数据读取
-var work_day = fs.readFileSync('day.txt').toString();
-// var work_week = fs.readFileSync('week.txt').toString();
+var work_day = fs.readFileSync('./data/day.txt').toString();
 
 function Fn(){
 	this.driver=driver;

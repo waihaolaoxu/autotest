@@ -1,8 +1,22 @@
-// 灌数据
-var util=require('./util');
-var fn = new util();
+/*
+ @ Author：前端老徐
+ @ Name：Selenium自动化发送周报日报
+ @ Date：2018/03/01
+ @ Weibo:http://weibo.com/qdlaoxu
+ @ GitHub:https://github.com/waihaolaoxu/autotest
+ @ Blog:http://www.loveqiao.com/
+*/
+var utils;
+var argv = process.argv.splice(2);
+if(argv[0]==='week'){
+	utils = require('./utils/week.js');
+}else{
+	utils = require('./utils/day.js');
+}
+var fn = new utils();
 var driver = fn.driver;
 var until = fn.until;
+
 //登陆
 fn.sendData({
 	url:'http://ething.123eblog.com/#/',// 登陆地址
