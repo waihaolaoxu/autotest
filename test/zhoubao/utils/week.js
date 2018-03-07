@@ -95,7 +95,7 @@ Fn.prototype={
 
 				driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754f75d332d5391e30899"]/table/tbody/tr['+index+']/td[5]/div/button[2]'))).click();
 				driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div[2]/div[1]/div/div[1]/input'))).sendKeys(d.person);
-				driver.sleep(1000); // 非常非常重要
+				driver.sleep(1500); // 非常非常重要
 				driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div[2]/div[1]/div/div[4]/ul[2]/li'))).click();
 				driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[3]/button[2]'))).click();
 			}); 
@@ -114,7 +114,7 @@ Fn.prototype={
 
 				driver.wait(until.elementLocated(By.xpath('//*[@id="grouptable_5a3754f75d332d5391e3089a"]/table/tbody/tr['+index+']/td[5]/div/button[2]'))).click();
 				driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div[2]/div[1]/div/div[1]/input'))).sendKeys(d.person);
-				driver.sleep(1000);// 非常非常重要
+				driver.sleep(1500);// 非常非常重要
 				driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[2]/div[2]/div[1]/div/div[4]/ul[2]/li'))).click();
 				driver.wait(until.elementLocated(By.xpath('//*[@id="es-body"]/div[1]/div/div/div[3]/button[2]'))).click();
 			});
